@@ -32,7 +32,7 @@ public class AppTest {
 
     @Test
     public void testMultipleFailuresScenario() {
-        // Triggers all core restriction rules at once to verify non-halting error aggregation
+       
         App.Employee emp = new App.Employee("E004", "Invalid Emp", 19, "Marketing", "Inactive", false, 1);
         App.EvaluationResult result = App.AccessEvaluator.evaluateAccess(emp, 2);
 
@@ -48,7 +48,7 @@ public class AppTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidInput_ThrowsException() {
-        // Enforces basic field input sanity testing
+      
         new App.Employee("", "John", 25, "IT", "Active", true, 2);
     }
 }

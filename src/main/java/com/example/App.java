@@ -6,13 +6,13 @@ import java.util.List;
 
 public class App {
 
-    // === 1. DOMAIN CLASS: EMPLOYEE ===
+   
     public static class Employee {
         private String id;
         private String name;
         private int age;
         private String department;
-        private String employmentStatus; // "Active" or "Inactive"
+        private String employmentStatus; 
         private boolean isIdValid;
         private int securityClearanceLevel;
 
@@ -40,9 +40,9 @@ public class App {
         public int getSecurityClearanceLevel() { return securityClearanceLevel; }
     }
 
-    // === 2. DOMAIN CLASS: EVALUATION RESULT ===
+    
     public static class EvaluationResult {
-        private String status; // Eligible, Conditionally Eligible, Not Eligible
+        private String status; 
         private List<String> rejectionReasons = new ArrayList<>();
 
         public String getStatus() { return status; }
@@ -51,14 +51,14 @@ public class App {
         public void addReason(String reason) { this.rejectionReasons.add(reason); }
     }
 
-    // === 3. CORE SERVICE: ACCESS EVALUATOR ===
+   
     public static class AccessEvaluator {
         private static final List<String> AUTHORIZED_DEPTS = Arrays.asList("IT", "HR", "Finance", "Administration");
 
         public static EvaluationResult evaluateAccess(Employee emp, int requestedAccessLevel) {
             EvaluationResult result = new EvaluationResult();
             
-            // Collect all core validation failures
+            
             if (emp.getAge() < 21) {
                 result.addReason("Employee age is under 21.");
             }
@@ -72,7 +72,7 @@ public class App {
                 result.addReason("Employee ID is invalid.");
             }
 
-            // Determine final evaluation classification matrix
+            
             if (!result.getRejectionReasons().isEmpty()) {
                 result.setStatus("Not Eligible");
             } else if (emp.getSecurityClearanceLevel() < requestedAccessLevel) {
@@ -86,13 +86,13 @@ public class App {
         }
     }
 
-    // === 4. MAIN BATCH AUTOMATION PIPELINE RUNNER ===
+    
     public static void main(String[] args) {
         System.out.println("=== Automated Employee Access Verification Batch ===");
 
         List<Employee> employeeBatch = new ArrayList<>();
         
-        // Automated Mock dataset generation matching normal, boundary, and multi-failure scenarios
+       
         try {
             employeeBatch.add(new Employee("E001", "Alice Jenkins", 25, "IT", "Active", true, 4));
             employeeBatch.add(new Employee("E002", "Bob Smith", 21, "HR", "Active", true, 2));
